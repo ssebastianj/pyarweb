@@ -1,16 +1,14 @@
 {% extends "base.html" %}
 
-{% load i18n %}
-
-{% load devtags %}
+{% load i18n devtags staticfiles %}
 
 {% block stylesheets %}
-  <link rel="stylesheet" href="/static/css/event_map.css">
+  <link rel="stylesheet" href="{% static 'events/css/event_map.css' %}">
 {% endblock %}
 
 {% block javascripts %}
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-  <script src="/static/js/event_detail.js"></script>
+  <script src="{% static 'events/js/event_detail.js' %}"></script>
 {% endblock %}
 
 
