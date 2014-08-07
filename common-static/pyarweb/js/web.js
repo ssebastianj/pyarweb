@@ -15,7 +15,7 @@ $(document).ready(function() {
 			text=$("form#search-form input.form-control.input-lg").val();
 			$("input.search").val(text);
 		}
-		$iframeGoogle.attr("src","/static/search.html?q="+text);
+		$iframeGoogle.attr("src","/common-static/search.html?q="+text);
 	}
 	
 	$("form#search-form").bind("submit",function(a) {
