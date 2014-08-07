@@ -457,6 +457,59 @@ time.published {
 .board-list-simple-item:nth-child(odd) {
     background-color: #F4F4F4;
 }
+.as-selections {
+    padding-left: 0px;
+    list-style-type: none;
+}
+/* Inherit styles from btn btn-xs and btn-default */
+.as-selection-item {
+    display: inline-block;
+    margin: 0px 3px 3px 0px;
+    vertical-align: middle;
+    cursor: pointer;
+    -moz-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #333;
+    background-color: #FFF;
+    border-color: #CCC;
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+.as-selection-item:hover {
+    color: #333;
+    background-color: #E6E6E6;
+    border-color: #ADADAD;
+}
+.as-message, .as-result-item {
+    list-style-type: square;
+}
+.as-result-item {
+    list-style-type: square;
+    padding-left: 5px;
+    border-radius: 2px;
+}
+.as-result-item.active {
+    background-color: white;
+    cursor: pointer;
+    border-color: #66AFE9;
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6);
+}
+.as-result-item em {
+    background-color: #FB8B00;
+}
+.as-close {
+    margin-right: 2px;
+    font-size: 15px;
+}
+.as-close:hover {
+    text-decoration: none;
+}
+
 @media (min-width: 768px) {
 	.navbar-header div.loginreg {
 		float: left;

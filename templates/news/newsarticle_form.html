@@ -1,8 +1,9 @@
 {% extends "base.html" %}
-{% load i18n %}
-{% load crispy_forms_tags %}
+{% load i18n crispy_forms_tags devtags staticfiles %}
 
-{% load devtags %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'django_summernote/summernote.css' %}">
+{% endblock %}
 
 {% block content %}
 <main id="main" class="container" role="main">
@@ -15,7 +16,7 @@
 	    		{% endif %}
 	    	</h2>
 	    </div>
-	    {{ form.media }}
+		{{ form.media.js }}
 	    {% crispy form %}
 	</div>
 </main>
