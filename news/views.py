@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext as _
-from community.views import OwnedObject, FilterableList
+from community.mixins import PermissionMixin, FilterableListMixin
 from .models import NewsArticle
 from .forms import NewsArticleForm
 
@@ -21,14 +21,14 @@ class NewsArticleCreate(CreateView):
         return super(NewsArticleCreate, self).form_valid(form)
         
 
-class NewsArticleDelete(DeleteView, OwnedObject):
+class NewsArticleDelete(DeleteView, PermissionMixin):
 
     """Delete a Job."""
     model = NewsArticle
     success_url = reverse_lazy('news_list_all')
 
 
-class NewsArticleUpdate(UpdateView, OwnedObject):
+class NewsArticleUpdate(UpdateView, PermissionMixin):
 
     """Updates a NewsArticle."""
     model = NewsArticle
@@ -40,6 +40,6 @@ class NewsArticleUpdate(UpdateView, OwnedObject):
         return context
 
 
-class NewsArticleList(ListView, FilterableList):
+class NewsArticleList(ListView, FilterableListMixin):
     model = NewsArticle
     paginate_by = 10

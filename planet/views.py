@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.views.generic.edit import FormView, DeleteView
 from django.views.generic.list import ListView
 
-from community.views import OwnedObject
+from community.mixins import PermissionMixin
 
 from planet.models import Blog, Feed, Author, Post
 from planet.forms import SearchForm, FeedForm
@@ -40,13 +40,13 @@ class BlogByUserList(ListView):
         return Blog.objects.filter(owner=self.request.user)
 
 
-class BlogDelete(DeleteView, OwnedObject):
+class BlogDelete(DeleteView, PermissionMixin):
     template_name = 'planet/blogs/confirm_delete.html'
     model = Blog
     success_url = reverse_lazy('planet_blog_list_by_user')
 
 
-class FeedDelete(DeleteView, OwnedObject):
+class FeedDelete(DeleteView, PermissionMixin):
     template_name = 'planet/feeds/confirm_delete.html'
     model = Feed
     success_url = reverse_lazy('planet_blog_list_by_user')

@@ -6,7 +6,7 @@ from django.views.generic import ListView
 from django.utils.translation import ugettext as _
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from community.views import OwnedObject, FilterableList
+from community.mixins import PermissionMixin, FilterableListMixin
 from .models import Job
 from .forms import JobForm
 
@@ -20,19 +20,19 @@ class JobCreate(CreateView):
         return super(JobCreate, self).form_valid(form)
 
 
-class JobList(ListView, FilterableList):
+class JobList(ListView, FilterableListMixin):
     model = Job
     paginate_by = 20
 
 
-class JobUpdate(UpdateView, OwnedObject):
+class JobUpdate(PermissionMixin, UpdateView):
 
     """Edit jobs that use Python."""
     model = Job
     form_class = JobForm
 
 
-class JobDelete(DeleteView, OwnedObject):
+class JobDelete(DeleteView, PermissionMixin):
 
     """Delete a Job."""
     model = Job

@@ -84,7 +84,7 @@ INSTALLED_APPS = (
     'tagging',
     'bootstrap3',
     'django_summernote',
-    'south',
+    #'south',
     'crispy_forms',
     'email_obfuscator',
 )
@@ -160,6 +160,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 SUMMERNOTE_CONFIG = {
     'inplacewidget_external_css': (),
+}
+
+SOUTH_MIGRATION_MODULES = {
+    'taggit': 'taggit.south_migrations',
 }
 
 # CELERY SETTINGS

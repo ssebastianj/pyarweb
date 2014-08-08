@@ -7,11 +7,12 @@ argparse==1.1
 beautifulsoup4==4.3.2
 billiard==3.3.0.18
 celery==3.1.13
+coverage==3.7.1
 django-bootstrap3==4.8.2
 django-bootstrap3-datetimepicker==2.2.3
 django-crispy-forms==1.4.0
--e git+https://github.com/PyAr/django-disqus.git@1dfd32372cf68f77ce2e757ad033abb485d602ae#egg=django_disqus-origin/master
-django-email-obfuscator==0.1.3
+-e git+https://github.com/PyAr/django-disqus.git@1dfd32372cf68f77ce2e757ad033abb485d602ae#egg=django_disqus-origin/HEAD
+-e git://github.com/morninj/django-email-obfuscator@5c21604ee9faee33d39fdc210f2f92cebe8ebbdd#egg=django_email_obfuscator-origin/HEAD
 django-extensions==1.3.3
 django-model-utils==2.0.3
 django-pagination-py3==1.1.1
@@ -19,7 +20,7 @@ django-registration==1.0
 django-summernote==0.5.13
 django-tagging==0.3.2
 django-taggit==0.12
--e git://github.com/MissFilly/django-taggit-autosuggest.git@826714ee6df34d3dc4f5e67970484ff09ce18472#egg=django_taggit_autosuggest-origin/master
+-e git://github.com/MissFilly/django-taggit-autosuggest.git@826714ee6df34d3dc4f5e67970484ff09ce18472#egg=django_taggit_autosuggest-origin/HEAD
 feedparser==5.1.3
 ipdb==0.8
 ipython==2.1.0
