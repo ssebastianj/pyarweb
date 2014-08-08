@@ -20,7 +20,7 @@ class JobCreate(CreateView):
         return super(JobCreate, self).form_valid(form)
 
 
-class JobList(ListView, FilterableListMixin):
+class JobList(FilterableListMixin, ListView):
     model = Job
     paginate_by = 20
 
@@ -32,7 +32,7 @@ class JobUpdate(PermissionMixin, UpdateView):
     form_class = JobForm
 
 
-class JobDelete(DeleteView, PermissionMixin):
+class JobDelete(PermissionMixin, DeleteView):
 
     """Delete a Job."""
     model = Job

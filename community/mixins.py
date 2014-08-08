@@ -46,7 +46,7 @@ class FilterableListMixin(object):
         return object_list
 
     def get_context_data(self, **kwargs):
-        context = super(FilterableList, self).get_context_data(**kwargs)
+        context = super(FilterableListMixin, self).get_context_data(**kwargs)
         context['tags'] = self.model.tags.all()
         context['included'] = self.included_tags
         context['excluded'] = self.excluded_tags
