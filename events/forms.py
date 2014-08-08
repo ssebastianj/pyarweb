@@ -56,7 +56,8 @@ class EventForm(forms.ModelForm):
         self.helper = FormHelper()
         self.form_method = "post"
         self.helper.add_input(Submit('job_submit', _('Guardar')))
-        self.helper.add_input(Reset('job_reset', _('Limpiar'), css_class='btn-default'))
+        self.helper.add_input(
+            Reset('job_reset', _('Limpiar'), css_class='btn-default'))
         self.helper.layout = Layout(
             Div(
                 'name',
@@ -73,6 +74,15 @@ class EventForm(forms.ModelForm):
                 css_id="map-canvas",
             )
         )
+
+    def clean(self):
+        cleaned_data = super(EventForm, self).clean()
+        start = cleaned_data.get('start_at')
+        end = cleaned_data.get('end_at')
+        if start and end and not end >= start:
+                raise forms.ValidationError(_("La fecha de inicio no puede \
+                                            ser mayor que la fecha de fin."))
+        return cleaned_data
 
     def save(self, *args, **kwargs):
         super(EventForm, self).save(*args, **kwargs)
