@@ -11,3 +11,5 @@ src
 pyarweb
 celerybeat-schedule
 local_settings.py
+.idea
+
