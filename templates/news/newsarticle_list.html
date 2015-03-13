@@ -18,16 +18,14 @@
         </div>
         {% if object_list %}
             {% for object in object_list %}
-            <article class="board-list-item">
                 <h4>
-                    <a href="{{ object.get_absolute_url }}">{{ object.title }}</a>  <span class="job-date">({{ object.modified|date:"d/m/y" }})</span>
+                    <a href="{{ object.get_absolute_url }}">{{ object.title }}</a>  <span class="job-date">({{ object.modified|date:"SHORT_DATE_FORMAT" }})</span>
                 </h4>
                 <p>
-                    {{ object.introduction }}
+                    {{ object.introduction|html2text|truncatewords:50 }}
                 </p>
-                <div class="text-muted">{% trans 'Etiquetas:' %}{% for t in object.tags.all %}<a href="{% url 'news_tags_list' tag=t.name %}" class="label label-default">{{ t.name }}</a>{% endfor %}</div>
+                <div class="text-muted">{% trans 'Etiquetas:' %}{% for t in object.tags.all %}<a href="{% url 'news_tags_list' tag=t.slug %}" class="label label-default">{{ t.name }}</a>{% endfor %}</div>
                 <p><a href="{{ object.get_absolute_url }}">{% trans 'Leer más...' %}</a></p>
-            </article>
             {% endfor %}
             {% paginate %}
         {% else %}
@@ -35,6 +33,15 @@
                 <p>{% trans 'La búsqueda no produjo resultados.' %}</p>
             </div>
         {% endif %}
+
+
+
+
+            <div class="pull-right">
+                <a href="{% url 'news_feed' %}" class="badge">
+                    <i class="fa fa-rss"></i> RSS
+                </a>
+           </div>
     </div>
 </section>
 {% endblock %}
